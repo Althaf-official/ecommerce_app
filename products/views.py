@@ -10,4 +10,4 @@ def product_detail_view(request):
         "description": obj.description,
     }
 
-    return render(request, "product/detail.html",{})
+    return render(request, "product/detail.html", context)

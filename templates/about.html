@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>this is about page inherit  block content</h1>
+<h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil itaque temporibus alias quia, voluptatibus voluptatem quam explicabo quasi eos expedita debitis deleniti sunt error corporis rerum similique incidunt dolorum cum!</h1>
+replace me
+<h1>{{ title|upper }} this is something</h1>
+<h3>{{ title|capfirst }}</h3>
+<h1>{{ title|title }} --this is title</h1>
+{{ my_html|safe }}
+{{ my_html|slugify }}slugify
+
+<p>
+    <h1>
+        {{ my_number }},{{my_list}}
+    </h1>
+</p>
+
+<ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+</ul>
+
+<ul>
+{% for abc in my_list  %}
+    {% if abc == 312 %}
+        <li>{{ forloop.counter }}-{{ abc|add:10 }}</li>
+    {% elif abc == "Abc" %}
+        <li>This is not the network</li>
+    {% else %}
+        <li>{{ forloop.counter }} {{ abc }}</li>   
+    {% endif %}   
+
+{% endfor %}
+</ul>
+
+
+
+{% endblock content %}
+
