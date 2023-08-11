@@ -2,6 +2,14 @@
 
 
 {% block content %}
+
     <h1>{{ title }}</h1>
-    <p>{{ description }}</p>
+
+    
+    <p>{% if description != None and description != '' %}
+        {{ description }}
+    {% else %}
+        Description Coming soon
+    {% endif %}</p>
+
 {% endblock content %}
