@@ -13,4 +13,4 @@ def product_detail_view(request):
         'object': obj#!associated with the key 'object' in the context dictionary. When you access context['object'], it returns the value
     }
 
-    return render(request, "products/detail.html", context)
+    return render(request, "products/product_detail.html", context)
