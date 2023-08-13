@@ -9,7 +9,8 @@ def product_create_view(request):
     form = ProductForm(request.POST or None)
     if form.is_valid():
         form.save()
-        form = ProductForm()
+        form = ProductForm()#!After successfully saving the form data, a new, empty instance of ProductForm is created. This step is likely intended to clear the form for a new input after successful submission. It ensures that the form fields are empty and ready to receive new data for the next submission.
+        
     
     context = {
         'form': form,
