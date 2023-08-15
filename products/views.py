@@ -6,7 +6,7 @@ from .models import Product
 # Create your views here.
 
 def product_create_view(request):
-    my_form = RawProductForm()
+    my_form = RawProductForm(request.POST)
     context = {
         "form": my_form,
     }
