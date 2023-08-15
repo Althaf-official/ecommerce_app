@@ -13,6 +13,6 @@ class ProductForm(forms.ModelForm):
         ]
 
 class RawProductForm(forms.Form):
-    title          = forms.CharField(max_length=20)
-    description    = forms.CharField()
-    price          = forms.DecimalField()
+    title          = forms.CharField(label='')# required=True is default
+    description    = forms.CharField(required=False)
+    price          = forms.DecimalField(initial=200)
