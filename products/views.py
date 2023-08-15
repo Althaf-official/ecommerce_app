@@ -1,13 +1,15 @@
 from django.shortcuts import render
 
-from .forms import ProductForm
+from .forms import ProductForm,RawProductForm
 
 from .models import Product
 # Create your views here.
 
 def product_create_view(request):
-    
-    context = {}
+    my_form = RawProductForm()
+    context = {
+        "form": my_form,
+    }
     return render(request, "products/product_create.html", context)
 
 # def product_create_view(request):
