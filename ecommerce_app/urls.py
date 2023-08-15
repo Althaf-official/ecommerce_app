@@ -23,7 +23,7 @@ from products.views import (
     dynamic_lookup_view
 )
 urlpatterns = [
-    path("products/<int:my_id>/",dynamic_lookup_view, name='product'),
+    path("products/<int:id>/",dynamic_lookup_view, name='product'),
     # path("create/",product_create_view),
     # path("product/",product_detail_view),
     path('admin/', admin.site.urls),

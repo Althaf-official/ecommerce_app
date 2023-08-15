@@ -5,12 +5,14 @@ from .forms import ProductForm,RawProductForm
 from .models import Product
 # Create your views here.
 
-def dynamic_lookup_view(request, my_id):
-    obj = Product.objects.get(id=my_id)
+def dynamic_lookup_view(request, id):
+    obj = Product.objects.get(id=id)
     context = {
         "object": obj
         }
     return render(request, "products/product_detail.html", context)
+    #! dynamically retrieving a Product object from the database based on the provided my_id, creating a context dictionary to pass the object to the template, and rendering the specified template with the provided context
+
 
 
 def render_initial_data(request):
