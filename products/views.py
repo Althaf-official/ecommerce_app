@@ -6,6 +6,8 @@ from .models import Product
 # Create your views here.
 
 def product_create_view(request):
+    print(request.GET)
+    print(request.POST)
     context = {}
     return render(request, "products/product_create.html", context)
 
