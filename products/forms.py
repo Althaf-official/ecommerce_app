@@ -13,11 +13,18 @@ class ProductForm(forms.ModelForm):
         ]
 
 class RawProductForm(forms.Form):
-    title          = forms.CharField(label='')# required=True is default
+    title          = forms.CharField(
+        label='',
+        # required=True is default
+        widget=forms.TextInput(
+            attrs={
+                "placeholder":"your title"
+                }))
     description    = forms.CharField(
         required=False,
         widget=forms.Textarea(
             attrs={
+                "placeholder":"your Description",
                 "class": "new-class-name two",
                 "rows": "20",
                 "cols": "50",
