@@ -11,6 +11,7 @@ def product_create_view(request):
         my_form = RawProductForm(request.POST)
         if my_form.is_valid():
             print(my_form.cleaned_data)
+            Product.objects.create(**my_form.cleaned_data)#!By using **, you're unpacking the dictionary's contents and passing them as keyword arguments to the create() method.
             my_form=RawProductForm()
         else:
             print(my_form.errors)
