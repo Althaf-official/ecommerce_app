@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404, redirect
 
 from .forms import ProductForm,RawProductForm
 
@@ -15,11 +15,14 @@ def product_delete_view(request,id):
         #confirming delete
         obj.delete()
         #deleted succesfully 
+        return redirect('../../')
+
 
     context ={
         "object":obj,
     }
     return render(request,"products/product_delete.html",context)
+
 
 
 
