@@ -14,6 +14,7 @@ def product_delete_view(request,id):
     if request.method == "POST":
         #confirming delete
         obj.delete()
+        #deleted succesfully 
 
     context ={
         "object":obj,
