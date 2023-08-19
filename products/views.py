@@ -1,11 +1,17 @@
 from django.http import Http404
 from django.shortcuts import render,get_object_or_404, redirect
 
-from .forms import ProductForm,RawProductForm
+from .forms import ProductForm, RawProductForm
 
 from .models import Product
 # Create your views here.
 
+def product_list_view(request):
+    queryset = Product.objects.all()#this will give back list of objects
+
+    context = {
+        "object_list": queryset
+    }
 
 
 def product_delete_view(request,id):
@@ -16,7 +22,6 @@ def product_delete_view(request,id):
         obj.delete()
         #deleted succesfully 
         return redirect('../../')
-
 
     context ={
         "object":obj,
