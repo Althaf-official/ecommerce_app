@@ -10,4 +10,4 @@ class Product(models.Model):
     features    = models.BooleanField(default=False)
 
     def get_absolute_url(self):
-        return reverse("product-detail", kwargs={"id": self.id})
+        return reverse("PRODUCTS:product-detail", kwargs={"id": self.id})
