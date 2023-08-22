@@ -8,7 +8,15 @@ from django.views.generic import (
     ListView,
 )
 
+
+from .forms import ArticleModelForm
 from .models import Article
+
+
+class ArticleCreateView(CreateView):
+    template_name = "articles/article_create.html"
+    queryset = Article.objects.all()
+
 
 class ArticleListView(ListView):
     template_name = "articles/article_list.html"
