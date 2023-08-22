@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import (
     CreateView,
+    DetailView,
     UpdateView,
     DeleteView,
     FormView,
@@ -9,8 +10,11 @@ from django.views.generic import (
 
 from .models import Article
 
-class ArticleListView(FormView):
+class ArticleListView(ListView):
     template_name = "articles/article_list.html"
     queryset = Article.objects.all()#blog/modelname_list.html
 
 
+class ArticleDetailView(DetailView):
+    template_name = "articles/article_detail.html"
+    queryset = Article.objects.all()
