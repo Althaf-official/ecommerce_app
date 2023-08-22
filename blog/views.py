@@ -15,6 +15,7 @@ from .models import Article
 
 class ArticleCreateView(CreateView):
     template_name = "articles/article_create.html"
+    form_class = ArticleModelForm
     queryset = Article.objects.all()
 
 
