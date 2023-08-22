@@ -18,6 +18,10 @@ class ArticleCreateView(CreateView):
     form_class = ArticleModelForm
     queryset = Article.objects.all()
 
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
+
 
 class ArticleListView(ListView):
     template_name = "articles/article_list.html"
