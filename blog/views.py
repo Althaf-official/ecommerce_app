@@ -53,11 +53,11 @@ class ArticleUpdateView(UpdateView):
 
 class ArticleDeleteView(DeleteView):
     template_name = "articles/article_delete.html"
-    #queryset = Article.objects.all()
 
-    def get_object(self):
-        id_ = self.kwargs.get("id")
-        return get_object_or_404(Article, id=id_)
+    def get_object(self):#This method is defined to retrieve the object (an article) that the view will perform deletion on.
+        id_ = self.kwargs.get("id")#*extracts the value of the "id" parameter from the URL's keyword arguments
+        return get_object_or_404(Article, id=id_)#! function to fetch an Article object with the specified ID from the database  #!no such object exists, it raises a 404 HTTP error
 
     def get_success_url(self):
-        return reverse("articles:article-list")
+        return reverse("articles:article-list")#!reverse function to generate a URL based on the URL name 
+        #!articles:article-list." URL pattern defined in your Django project's URL configuration
