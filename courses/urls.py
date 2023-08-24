@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import my_fbv
+from .views import my_fbv,CourseView
 
 
 
