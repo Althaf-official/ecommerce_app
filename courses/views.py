@@ -3,8 +3,9 @@ from django.views import View
 
 
 class CourseView(View):
+    template_name = "about.html"
     def get(self,request,*args,**kwargs):
-        return render(request,"about.html",{})
+        return render(request, self.template_name, {})
 
 
 # HTTP METHODS
