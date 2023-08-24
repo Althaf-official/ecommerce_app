@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import (
     CreateView,
     DetailView,
@@ -30,4 +30,21 @@ class ArticleListView(ListView):
 
 class ArticleDetailView(DetailView):
     template_name = "articles/article_detail.html"
+    #queryset = Article.objects.all()
+
+    def get_object(self):
+        id_ = self.kwargs.get("id")
+        return get_object_or_404(Article, id=id_)
+
+class ArticleUpdateView(UpdateView):
+    template_name = "articles/article_create.html"
+    form_class=ArticleModelForm
     queryset = Article.objects.all()
+
+    def get_object(self):
+        id = self.kwargs.get("id")
+        return get_object_or_404(Article,id=id)
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
