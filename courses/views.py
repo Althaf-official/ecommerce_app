@@ -5,6 +5,14 @@ from django.views import View
 from .models import Course
 
 
+class CourseListView(View):
+    template_name = "courses/course_list.html"
+    queryset = Course.objects.all()#!This queryset will be used later to fetch data to display in the template
+    
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name,{'object_list':self.queryset})
+
 class CourseView(View):
     template_name = "courses/course_detail.html"
     def get(self,request, id=None ,*args,**kwargs):
