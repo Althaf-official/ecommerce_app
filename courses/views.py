@@ -8,10 +8,11 @@ from .models import Course
 class CourseListView(View):
     template_name = "courses/course_list.html"
     queryset = Course.objects.all()#!This queryset will be used later to fetch data to display in the template
-    
+
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name,{'object_list':self.queryset})
+        #!eturn render(request, self.template_name, {'object_list': self.queryset}): This line returns an HTTP response using the render function. Here's what each part of this line does:
 
 class CourseView(View):
     template_name = "courses/course_detail.html"
