@@ -15,7 +15,10 @@ class CourseCreateView(View):
 
     def post(self,request, *args,**kwargs):
         #POST Method
-        context = {}
+        form = CourseModelForm(request.POST)
+        context = {"form": form}
+        if form.is_valid():
+            form.save()
         return render(request, self.template_name, context)
 
 class CourseListView(View):
