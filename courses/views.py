@@ -3,14 +3,18 @@ from django.views import View
 #BASE CLASS VIEW =View
 
 from .models import Course
+from .forms import CourseModelForm
 
 class CourseCreateView(View):
     template_name = "courses/course_create.html"
     def get(self,request, *args,**kwargs):
-        context = {}
+        #GET Method
+        form = CourseModelForm()
+        context = {"form": form}
         return render(request, self.template_name, context)
 
     def post(self,request, *args,**kwargs):
+        #POST Method
         context = {}
         return render(request, self.template_name, context)
 
