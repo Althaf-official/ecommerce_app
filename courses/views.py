@@ -17,6 +17,8 @@ class CourseListView(View):
         context = {'object_list': self.get_queryset()}
         return render(request, self.template_name,{'object_list':self.queryset})
         #!eturn render(request, self.template_name, {'object_list': self.queryset}): This line returns an HTTP response using the render function. Here's what each part of this line does:
+class MyListView(CourseListView):
+    queryset = Course.objects.filter(id=1)
 
 class CourseView(View):
     template_name = "courses/course_detail.html"
