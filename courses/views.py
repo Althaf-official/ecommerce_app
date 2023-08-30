@@ -4,6 +4,15 @@ from django.views import View
 
 from .models import Course
 
+class CourseCreateView(View):
+    template_name = "courses/course_create.html"
+    def get(self,request, *args,**kwargs):
+        context = {}
+        return render(request, self.template_name, context)
+
+    def post(self,request, *args,**kwargs):
+        context = {}
+        return render(request, self.template_name, context)
 
 class CourseListView(View):
     template_name = "courses/course_list.html"
