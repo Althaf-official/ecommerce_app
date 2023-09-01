@@ -5,6 +5,26 @@ from django.views import View
 from .models import Course
 from .forms import CourseModelForm
 
+class CourseUpdateView(View):
+    template_name = "courses/course_update.html"
+    def get_object(self)
+
+
+    def get(self,request, *args,**kwargs):
+        #GET Method
+        form = CourseModelForm()
+        context = {"form": form}
+        return render(request, self.template_name, context)
+
+    def post(self,request, *args,**kwargs):
+        #POST Method
+        form = CourseModelForm(request.POST)
+        context = {"form": form}
+        if form.is_valid():
+            form.save()
+            form = CourseModelForm()
+        return render(request, self.template_name, context)
+
 class CourseCreateView(View):
     template_name = "courses/course_create.html"
     def get(self,request, *args,**kwargs):
