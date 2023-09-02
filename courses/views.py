@@ -7,7 +7,8 @@ from .forms import CourseModelForm
 
 class CourseUpdateView(View):
     template_name = "courses/course_update.html"
-    def get_object(self)
+    def get_object(self):
+        return None
 
 
     def get(self,request, *args,**kwargs):
