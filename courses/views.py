@@ -8,22 +8,34 @@ from .forms import CourseModelForm
 class CourseUpdateView(View):
     template_name = "courses/course_update.html"
     def get_object(self):
-        return None
+        id = self.kwargs.get("id")
+        obj = None
+        if id is not None:
+            obj = get_object_or_404(Course, id=id)
+        return obj
 
 
-    def get(self,request, *args,**kwargs):
+    def get(self,request,id=None, *args,**kwargs):
         #GET Method
-        form = CourseModelForm()
-        context = {"form": form}
+        context = {}
+        obj = self.get_object()
+        if obj is not None:
+            form = CourseModelForm(instance=obj)
+            context["object"] = obj
+            context["form"] = form
         return render(request, self.template_name, context)
 
-    def post(self,request, *args,**kwargs):
+    def post(self,request,id=None, *args,**kwargs):
         #POST Method
-        form = CourseModelForm(request.POST)
-        context = {"form": form}
-        if form.is_valid():
-            form.save()
-            form = CourseModelForm()
+        context = {}
+        obj = self.get_object()
+        if obj is not None:
+            form = CourseModelForm(request.POST, instance=obj)
+            if form.is_valid():
+                form.save()
+        context['object'] = obj
+        context['form']=form
+
         return render(request, self.template_name, context)
 
 class CourseCreateView(View):
@@ -63,7 +75,7 @@ class CourseView(View):
     def get(self,request, id=None ,*args,**kwargs):
         context = {}
 
-        if id is None:
+        if id is not None:
             obj = get_object_or_404(Course, id=id)
             context["object"] = obj
         return render(request, self.template_name, context)
